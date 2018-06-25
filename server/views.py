@@ -9,3 +9,8 @@ logger = app.logger
 def document_root():
     '''Root of application, serves home page'''
     return render_template('index.html', static_path='/static')
+
+@app.route('/germplasm')
+def main_germplasm():
+    '''Germplasm Page'''
+    return render_template('templates/germplasm.html', static_path='/static')

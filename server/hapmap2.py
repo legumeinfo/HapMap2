@@ -5,11 +5,13 @@
 ###############################################################################
 
 import os
+import sys
 import logging
 from logging import Formatter
 from logging.handlers import RotatingFileHandler
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
+from flask_cors import CORS
 
 LOGFILE = 'logs/hapmap2.log'
 MAXLOGBYTES = 1024 * 1024
@@ -27,6 +29,10 @@ app.config.update(dict(
     USERNAME = 'ccameron',
     PSWD = ''
 ))
+if not os.environ.get('BLAST_DB_HOME'):
+    sys.stderr.write('BLAST_DB_HOME environment variable REQUIRED!\n')
+    sys.exit(1)
+app.blast_db_dir = os.environ.get('BLAST_DB_HOME') # db dir for blast objects
 # WILL FILL HERE FOR INITIAL DATA an api view will be required here to serve it
 
 msg_format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -49,6 +55,8 @@ gunicorn_access = logging.getLogger('gunicorn.access')
 gunicorn_error.addHandler(handler)
 gunicorn_access.addHandler(handler)
 app.logger.addHandler(handler)
+
+CORS(app)
 
 import views
 

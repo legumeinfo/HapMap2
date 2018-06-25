@@ -7,9 +7,9 @@ route = app.config['API_PATH']
 
 @app.route(route + '/germplasm')
 def germplasm():
-    '''Germplasm'''
-    endpoints = sorted(
-                      [rule.rule for rule in app.url_map.iter_rules() 
-                      if rule.endpoint != 'static']
-               )
-    return jsonify(dict(routes=endpoints))
+    '''Get all Germplasm and Return as JSON'''
+    with postgres_db_connect.get_pooled_cursor() as cursor:
+        query = '''select * from hapmap_line'''
+        cursor.execute(query)
+        results = cursor.fetchall()
+    return jsonify({'data': results})
