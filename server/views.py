@@ -1,7 +1,7 @@
 import re
 from hapmap2 import app, session, g, render_template, request
 from flask import render_template_string, make_response, jsonify
-from api import help, germplasm
+from api import help, germplasm, blast
 
 logger = app.logger
 

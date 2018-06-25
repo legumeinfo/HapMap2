@@ -11,7 +11,6 @@ from io import StringIO
 
 #def transform_results(line):  # this is going to be necessary later
 
-
 def sanitize_fasta(fasta):
     '''Trys to load FASTA as SeqIO Record Object.  If fails return error.
 
@@ -43,7 +42,7 @@ def blast_targets(blast, query, db, logger, **kwargs):
                               executable='/bin/bash')
     output, error = result.communicate()
     residues = re.compile('Ignoring invalid residues')
-    if error and not residues.search(error):
+    if error and not residues.search(str(error)):
         raise Exception("The Blast process has errored.\n" + 
                         "return code: " + str(result.returncode) + "\n" +
                         "Error: " + str(error.strip()))
