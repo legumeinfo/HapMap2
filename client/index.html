@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>DSCensor</title>
+<title>HAPMAP2</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.0/css/select.dataTables.min.css">
 </head>
 <style>
-  #dscensor-main-nav
+  #hapmap2-main-nav
   {
     padding: 2.0em;
   }
@@ -54,10 +54,10 @@
     color: rgba(087, 087, 087, 1);
   }
 </style>
-<body background="https://commons.wikimedia.org/wiki/File:Medicago_truncatula_A17_plant.JPG">
-    <div class="container" id="dscensor-main-nav">
+<body background="https://upload.wikimedia.org/wikipedia/commons/3/39/Medicago_truncatula_A17_plant.JPG">
+    <div class="container" id="hapmap2-main-nav">
         <div class="jumbotron" id="main-nav-jumbo">
-            <h1><b>HAPMAP2 </b><small id="main-nav-subtext">Data Aggregation, Visualization and Retrieval</small></h1>
+            <h1><b>HAPMAP2 </b><small id="main-nav-subtext">Medicago Truncatula Analysis Portal</small></h1>
             <div class="container">
             <nav class="navbar navbar-inverse" id="main-nav-navbar">
                 <ul class="nav navbar-nav">
@@ -65,14 +65,15 @@
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b>Views </b><span class="caret"></span></a>
                       <ul class="dropdown-menu">
-                        <li><a href="http://fisher.ncgr.org:50002/DSCensor_neo4j_dynamic_fa"><b class="dropdown-elements">Genome Summary</b></a></li>
-                        <li><a href="http://fisher.ncgr.org:50002/DSCensor_neo4j_dynamic"><b class="dropdown-elements">GBrowse</b></a></li>
+                        <li><a href="#"><b class="dropdown-elements">Genome Summary</b></a></li>
+                        <li><a href="#"><b class="dropdown-elements">GBrowse</b></a></li>
                       </ul>
                     </li>
+                    <li><a href="#" onclick="alert_placeholder()"><b>BLAST</b></a></li>
                 </ul>
                 <form class="navbar-form navbar-left" id="main-nav-left">
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Search DSCensor" id="basic-search-input">
+                      <input type="text" class="form-control" placeholder="Search HapMap2" id="basic-search-input">
                     </div>
                     <button class="btn btn-default" id="basic-search-submit"><b>Submit</b></button>
                 </form>
