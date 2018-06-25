@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Germplasm</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter2/1.3.14/crossfilter.min.js"></script>
+    <script src="http://d3js.org/d3.v3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.0.0-beta.31/dc.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/colreorder/1.3.2/js/dataTables.colReorder.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
+    <script src="https://rawgit.com/legumeinfo/lis-taxon-symbology/master/dist/bundle.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dc/2.0.0-beta.31/dc.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/colreorder/1.3.2/css/colReorder.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.0/css/select.dataTables.min.css">
+</head>
+<style>
+  #germplasm-main
+  {
+    padding: 2.0em;
+  }
+</style>
+    <div class="container-fluid" id="germplasm-main">
+        <table class="table table-striped table-bordered" id="germplasm-datatable" width="100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Category</th>
+                    <th>Population</th>
+                    <th>Country</th>
+                    <th>Seeds Origin</th>
+                    <th>Seeds Available</th>
+                    <th>Email</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                </tr>
+            </thead>
+        </table>
+        <button id="request-germplasm">Request Selected</button>
+    </div>
+<script>
+    $(document).ready(function() {
+        $('#germplasm-datatable').DataTable({
+            'ajax' : {
+                      'url': 'http://fisher.ncgr.org:50021/api/v1/germplasm'
+                     },
+            'columns' : [
+                {'data': 'hapmap_id'},
+                {'data': 'category'},
+                {'data': 'population_of_origin'},
+                {'data': 'country_of_origin'},
+                {'data': 'seeds_from'},
+                {'data': 'seeds_available'},
+                {'data': 'request_email'},
+                {'data': 'location_latitude'},
+                {'data': 'location_longitude'}
+            ],
+            "colReorder" : {
+                fixedColumnsLeft: 1
+            },
+            "search": {
+                "caseInsensitive": true,
+                "regex": true
+            },
+            "select" : true,
+            "order" : []
+        });
+    });
+    function alert_placeholder(){
+        alert('Coming Soon!')
+    }
+</script>
+</html>
+</html>
