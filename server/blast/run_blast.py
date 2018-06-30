@@ -43,9 +43,8 @@ def blast_targets(blast, query, db, logger, **kwargs):
     output, error = result.communicate()
     residues = re.compile('Ignoring invalid residues')
     if error and not residues.search(str(error)):
-        raise Exception("The Blast process has errored.\n" + 
-                        "return code: " + str(result.returncode) + "\n" +
-                        "Error: " + str(error.strip()))
+        error = "Error: " + str(error.strip())
+        raise Exception(error)
 #    assert output, str("results steam not populated, blast errored: " +
 #                       result.returncode + ' ' + error.strip())
     return output

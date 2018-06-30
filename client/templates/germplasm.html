@@ -23,11 +23,68 @@
 <style>
   #germplasm-main
   {
-    padding: 2.0em;
+    background-color: rgba(241,241,241, 0.8);
+    margin-top:0.5em;
+    padding-top:0.75em;
+    overflow-x:auto;
+  }
+  #request-germplasm
+  {
+    margin:1.0em;
+  }
+  #germplasm-datatable
+  {
+    background-color: white;
+  }
+  #germplasm-jumbotron
+  {
+    background-color: rgba(125, 62, 188, 0.7);
+    text-align: center; 
+  }
+  .jumbotron h1
+  {
+    color:white;
+  }
+  table tbody tr.even
+  {
+    background-color: rgba(125, 62, 188, 0.12);
+  }
+  #main-nav-right
+  {
+    margin-right: 0.5em;
+  }
+  #main-nav-left
+  {
+    margin-left: 1.0em
+  }
+  #main-nav-subtext
+  {
+    color: rgba(087, 087, 087, 1);
+  }
+  .dropdown-elements:hover
+  {
+    color: rgba(087, 087, 087, 1);
   }
 </style>
-    <div class="container-fluid" id="germplasm-main">
-        <table class="table table-striped table-bordered" id="germplasm-datatable" width="100%">
+<body background="https://upload.wikimedia.org/wikipedia/commons/c/c6/Medicago_minima_eF.jpg">
+<div class="container" id="germplasm-main">
+        <nav class="navbar navbar-inverse" id="main-nav-navbar">
+        <ul class="nav navbar-nav">
+	    <li><a href="http://fisher.ncgr.org:50021"><b>Home</b></a></li>
+	    <li><a href="http://fisher.ncgr.org:50021/germplasm"><b>Germplasm</b></a></li>
+	    <li><a href="#"><b>BLAST</b></a></li></li>
+	</ul>
+        <ul class="nav navbar-nav navbar-right" id="main-nav-right">
+            <li><a href="#"><b>Help</b></a></li>
+            <li><a href="#"><b>About</b></a></li>
+            <li><a href="#"><b>Links</b></a></li>
+        </ul>
+        </nav>
+
+    <div class="jumbotron" id="germplasm-jumbotron">
+        <h1 id="germplasm-header">Medicago Germplasm Listing</h1>
+    </div>
+        <table class="display table table-striped table-bordered" id="germplasm-datatable" width="100%">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -43,9 +100,10 @@
             </thead>
         </table>
         <button id="request-germplasm">Request Selected</button>
-    </div>
+</div>
+</body>
 <script>
-    $(document).ready(function() {
+    document.addEventListener('DOMContentLoaded', function() {
         $('#germplasm-datatable').DataTable({
             'ajax' : {
                       'url': 'http://fisher.ncgr.org:50021/api/v1/germplasm'
@@ -61,6 +119,7 @@
                 {'data': 'location_latitude'},
                 {'data': 'location_longitude'}
             ],
+            "bSortClasses" : false,
             "colReorder" : {
                 fixedColumnsLeft: 1
             },
@@ -76,5 +135,4 @@
         alert('Coming Soon!')
     }
 </script>
-</html>
 </html>
