@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Germplasm</title>
+<title>BLAST RESULTS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -21,22 +21,22 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.0/css/select.dataTables.min.css">
 </head>
 <style>
-  #germplasm-main
+  #blast-results-main
   {
     background-color: rgba(241,241,241, 0.8);
     margin-top:0.5em;
     padding-top:0.75em;
     overflow-x:auto;
   }
-  #request-germplasm
+  #request-blast-results
   {
     margin:1.0em;
   }
-  #germplasm-datatable
+  #blast-results-datatable
   {
     background-color: white;
   }
-  #germplasm-jumbotron
+  #blast-results-jumbotron
   {
     background-color: rgba(125, 62, 188, 0.7);
     text-align: center; 
@@ -67,7 +67,7 @@
   }
 </style>
 <body background="https://upload.wikimedia.org/wikipedia/commons/c/c6/Medicago_minima_eF.jpg">
-<div class="container" id="germplasm-main">
+<div class="container" id="blast-results-main">
         <nav class="navbar navbar-inverse" id="main-nav-navbar">
         <ul class="nav navbar-nav">
 	    <li><a href="http://fisher.ncgr.org:50021"><b>Home</b></a></li>
@@ -80,50 +80,29 @@
             <li><a href="#"><b>Links</b></a></li>
         </ul>
         </nav>
-
-    <div class="jumbotron" id="germplasm-jumbotron">
-        <h1 id="germplasm-header">Medicago Germplasm Listing</h1>
+    <div class="jumbotron" id="blast-results-jumbotron">
+        <h1 id="blast-results-header">BLAST Results</h1>
     </div>
-        <table class="display table table-striped table-bordered" id="germplasm-datatable" width="100%">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>ID</th>
-                    <th>Category</th>
-                    <th>Population</th>
-                    <th>Country</th>
-                    <th>Seeds Origin</th>
-                    <th>Seeds Available</th>
-                    <th>Latitude</th>
-                    <th>Longitude</th>
-                </tr>
-            </thead>
+        <table class="display table table-striped table-bordered" id="blast-results-datatable" width="100%">
         </table>
-        <button id="request-germplasm">Request Selected</button>
+        <button id="request-blast-results">Export Results</button>
 </div>
 </body>
 <script>
+    var blast_results = {{ data.data }};
+    var columns = blast_results['columns']
+    var data = blast_results['col_data']
+    console.log(blast_results);
+    console.log(columns);
+    console.log(data);
     document.addEventListener('DOMContentLoaded', function() {
-        var table = $('#germplasm-datatable').DataTable({
-            'ajax' : {
-                      'url': 'http://fisher.ncgr.org:50021/api/v1/germplasm'
-                     },
-            'columns' : [
-                {'data': null, defaultContent: ""},
-                {'data': 'hapmap_id'},
-                {'data': 'category'},
-                {'data': 'population_of_origin'},
-                {'data': 'country_of_origin'},
-                {'data': 'seeds_from'},
-                {'data': 'seeds_available'},
-                {'data': 'location_latitude'},
-                {'data': 'location_longitude'}
-            ],
+        $('#blast-results-datatable').DataTable({
+            'data': data,
+            'columns' : columns,
             "bSortClasses" : false,
             "colReorder" : {
-                fixedColumnsLeft: [1, 2]
+                fixedColumnsLeft: 1
             },
-            "columnDefs": [{className: "select-checkbox", targets: 0}],
             "search": {
                 "caseInsensitive": true,
                 "regex": true
@@ -131,37 +110,7 @@
             "select" : true,
             "order" : []
         });
-        document.getElementById('request-germplasm').addEventListener('click',
-            function(){
-                console.log('clicked me ' + table);
-                var export_me = table.rows('.selected').data();
-                var hapmap_ids = {'data': []};
-                if (export_me.length > 0){
-                    console.log(export_me);
-                    for(var i=0;i < export_me.length;i++){
-                        hapmap_ids['data'].push(export_me[i]['hapmap_id'].replace(/\s+/g, ''));
-                    }
-                    console.log(hapmap_ids);
-                    xhr_post('http://fisher.ncgr.org:50021/germplasm-request', hapmap_ids);
-                }
-                return
-        });
     });
-    function xhr_post(url, data){
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', url, true)
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var response_page = xhr.responseText;
-                console.log(response_page);
-                var new_page = window.open('', '_blank');
-                console.log(new_page);
-                new_page.document.write('<h1>' + response_page + '</h1>');
-            }
-        };
-        xhr.send(JSON.stringify(data));
-    }
     function alert_placeholder(){
         alert('Coming Soon!')
     }

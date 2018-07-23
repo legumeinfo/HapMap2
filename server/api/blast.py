@@ -18,11 +18,40 @@ def allowed_file(filename):
 
 
 def check_blast_db(db_lookup):
+    '''Checks provided blast_db lookup in psql'''
     with postgres_db_connect.get_pooled_cursor() as cursor:
         query = '''select * from blast_databases where db_lookup=%s'''
         cursor.execute(query, [db_lookup])
         results = cursor.fetchall()
     return results
+
+
+def parse_post_request(this_request):
+    '''Handles parsing of post requests to /api/v1/blast'''
+    options = {}  # add blast options here
+    form_data = this_request.form  # assign form data
+    query = ''
+    blast_db = ''
+    output = ''
+    blast = 'blastn'  # change later for form options
+    if form_data:  # if form process
+         files = this_request.files  # set files to find and parse
+         blast_db = form_data['blast-database-select']
+         if not check_blast_db(blast_db):
+             return('No Blast db found for {}'.format(blast_db), 400)
+         if form_data.get('blast-sequence-input'):
+             query = form_data.get('blast-sequence-input')
+         else:
+             if not files['sequence-input-file']:
+                 return('sequence_file_empty', 400)
+             blast_me = files['sequence-input-file']
+             if not allowed_file(blast_me.filename):
+                 return('format not allowed', 400)
+             query = str(blast_me.read(), 'utf-8')
+         blast_db = app.blast_db_dir + '/' + blast_db
+         output = run_blast.blast_targets(blast, query, blast_db,
+                                          logger, **options)
+    return {'data': output}
 
 
 @app.route(ROUTE + '/blast/databases', methods=['GET'])
@@ -38,31 +67,7 @@ def database_listing():
 @app.route(ROUTE + '/blast', methods=['POST'])
 def blast():
     '''Blast Service.  Accpets POST with correct data structure.'''
-    if request.method == 'POST':
-        options = {}  # add blast options here
-        form_data = request.form  # assign form data
-        query = ''
-        blast_db = ''
-        output = ''
-        blast = 'blastn'  # change later for form options
-        if form_data:  # if form process
-             files = request.files  # set files to find and parse
-             blast_db = form_data['blast-database-select']
-             if not check_blast_db(blast_db):
-                 return('No Blast db found for {}'.format(blast_db), 400)
-             if form_data.get('blast-sequence-input'):
-                 query = form_data.get('blast-sequence-input')
-             else:
-                 if not files['sequence-input-file']:
-                     return('sequence_file_empty', 400)
-                 blast_me = files['sequence-input-file']
-                 if not allowed_file(blast_me.filename):
-                     return('format not allowed', 400)
-                 query = str(blast_me.read(), 'utf-8')
-             blast_db = app.blast_db_dir + '/' + blast_db
-             output = run_blast.blast_targets(blast, query, blast_db,
-                                              logger, **options)
-        return jsonify({'db': blast_db, 'query': query, 'results': output})
+    return jsonify(parse_post_request(request))
 #        if not blast in BLAST_MODES:
 #            return('blast mode {} not supported'.format(blast), 400)
 #        if data.get('blast_opts'):  # get options for blast
@@ -107,7 +112,3 @@ def blast():
 #                                                 options['bdb'], 
 #                                                 logger, **options)
 #                return jsonify({'data': output})
-    else:  # 405 if not POST
-        flash('method must be POST')
-        response = 'method {} not supported'.format(request.method)
-        return(response, 405)

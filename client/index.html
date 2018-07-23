@@ -65,7 +65,7 @@
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b>Views </b><span class="caret"></span></a>
                       <ul class="dropdown-menu">
-                        <li><a href="#"><b class="dropdown-elements">Genome Summary</b></a></li>
+                        <li><a href="http://fisher.ncgr.org:50002/DSCensor_neo4j_dynamic/fasta:HAPMAP"><b class="dropdown-elements">Genome Summary</b></a></li>
                         <li><a href="#"><b class="dropdown-elements">GBrowse</b></a></li>
                       </ul>
                     </li>
@@ -95,9 +95,9 @@
             if (! search_input.value){
                 return;
             }
-            var search_me = 'PUTSEARCHENDPOINTHERE/' + search_input.value;
+            var search_me = 'http://fisher.ncgr.org:50002/file-listing/' + search_input.value + ':HAPMAP';
             console.log(search_me);
-/*            window.open(search_me);*/
+            window.open(search_me);
             event.preventDefault();
         });
     });

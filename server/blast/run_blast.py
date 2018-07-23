@@ -23,7 +23,31 @@ def sanitize_fasta(fasta):
         all_sequences.append('>{}\n{}'.format(record.description, record.seq))
 #        print(remove_me.sub('', test))
     return all_sequences
-        
+
+
+def parse_fmt6(fmt6):
+    '''parses fmt 6 and returns dictionary of values'''
+    columns = ['Query', 'Subject', 'Percent ID', 'Length', 'Mismatch',
+               'Gaps', 'QStart', 'QEnd', 'Sstart', 'Send', 'E-value',
+               'Bit-Score']
+    formatted_col = []
+    for c in columns:
+        c = {'title': c}
+        formatted_col.append(c)
+    data = {'results': [], 'columns': formatted_col, 'col_data': []}
+    for record in fmt6.splitlines():
+        record = str(record, 'utf-8')
+        values = record.split('\t')
+        add_me = {'qseqid': values[0], 'sseqid': values[1], 
+                  'pident': float(values[2]), 'length': int(values[3]),
+                  'mismatch': int(values[4]), 'gapopens': int(values[5]),
+                  'qstart': int(values[6]), 'qend': int(values[7]),
+                  'sstart': int(values[8]), 'send': int(values[9]),
+                  'evalue': float(values[10]), 'bitscore': float(values[11])}
+        data['results'].append(add_me)
+        data['col_data'].append(values) 
+    return data
+
 
 def blast_targets(blast, query, db, logger, **kwargs):
     '''Blast Queries after Sanitizing'''
@@ -47,7 +71,8 @@ def blast_targets(blast, query, db, logger, **kwargs):
         raise Exception(error)
 #    assert output, str("results steam not populated, blast errored: " +
 #                       result.returncode + ' ' + error.strip())
-    return output
+    data = parse_fmt6(output)
+    return data
 
 
 if __name__ == '__main__':

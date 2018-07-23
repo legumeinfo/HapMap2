@@ -17,5 +17,7 @@ def germplasm():
             seeds_available = False
             if r['seeds_available']:  # check if 1 in db
                 seeds_available = True
+            if r['request_email']:
+                r['request_email'] = ''
             r['seeds_available'] = seeds_available  # set value for table
     return jsonify({'data': results})
