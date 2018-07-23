@@ -158,6 +158,8 @@
                 var new_page = window.open('', '_blank');
                 console.log(new_page);
                 new_page.document.write('<h1>' + response_page + '</h1>');
+                new_page.stop()
+                return
             }
         };
         xhr.send(JSON.stringify(data));

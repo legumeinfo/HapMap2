@@ -36,7 +36,7 @@ app.blast_db_dir = os.environ.get('BLAST_DB_HOME') # db dir for blast objects
 # WILL FILL HERE FOR INITIAL DATA an api view will be required here to serve it
 app.templates_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 app.templates_dir += '/client/templates/'
-print(app.templates_dir)
+app.mailing_address = 'germplasm@hapmap2.ncgr.org'
 msg_format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 formatter = Formatter(msg_format)
 handler = RotatingFileHandler(
