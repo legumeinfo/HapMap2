@@ -2,84 +2,14 @@
 <html lang="en">
 <head>
 <title>BLAST RESULTS</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter2/1.3.14/crossfilter.min.js"></script>
-    <script src="http://d3js.org/d3.v3.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.0.0-beta.31/dc.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/colreorder/1.3.2/js/dataTables.colReorder.min.js"></script>
-    <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
-    <script src="https://rawgit.com/legumeinfo/lis-taxon-symbology/master/dist/bundle.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dc/2.0.0-beta.31/dc.css">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/colreorder/1.3.2/css/colReorder.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.0/css/select.dataTables.min.css">
+    {% include 'html/header.html' %}
 </head>
 <style>
-  #blast-results-main
-  {
-    background-color: rgba(241,241,241, 0.8);
-    margin-top:0.5em;
-    padding-top:0.75em;
-    overflow-x:auto;
-  }
-  #request-blast-results
-  {
-    margin:1.0em;
-  }
-  #blast-results-datatable
-  {
-    background-color: white;
-  }
-  #blast-results-jumbotron
-  {
-    background-color: rgba(125, 62, 188, 0.7);
-    text-align: center; 
-  }
-  .jumbotron h1
-  {
-    color:white;
-  }
-  table tbody tr.even
-  {
-    background-color: rgba(125, 62, 188, 0.12);
-  }
-  #main-nav-right
-  {
-    margin-right: 0.5em;
-  }
-  #main-nav-left
-  {
-    margin-left: 1.0em
-  }
-  #main-nav-subtext
-  {
-    color: rgba(087, 087, 087, 1);
-  }
-  .dropdown-elements:hover
-  {
-    color: rgba(087, 087, 087, 1);
-  }
+    {% include 'css/blast-results.css' %}
 </style>
 <body background="https://upload.wikimedia.org/wikipedia/commons/c/c6/Medicago_minima_eF.jpg">
 <div class="container" id="blast-results-main">
-        <nav class="navbar navbar-inverse" id="main-nav-navbar">
-        <ul class="nav navbar-nav">
-	    <li><a href="http://fisher.ncgr.org:50021"><b>Home</b></a></li>
-	    <li><a href="http://fisher.ncgr.org:50021/germplasm"><b>Germplasm</b></a></li>
-	    <li><a href="#"><b>BLAST</b></a></li></li>
-	</ul>
-        <ul class="nav navbar-nav navbar-right" id="main-nav-right">
-            <li><a href="#"><b>Help</b></a></li>
-            <li><a href="#"><b>About</b></a></li>
-            <li><a href="#"><b>Links</b></a></li>
-        </ul>
-        </nav>
+    {% include 'html/nav.html' %}
     <div class="jumbotron" id="blast-results-jumbotron">
         <h1 id="blast-results-header">BLAST Results</h1>
     </div>
@@ -95,24 +25,6 @@
     console.log(blast_results);
     console.log(columns);
     console.log(data);
-    document.addEventListener('DOMContentLoaded', function() {
-        $('#blast-results-datatable').DataTable({
-            'data': data,
-            'columns' : columns,
-            "bSortClasses" : false,
-            "colReorder" : {
-                fixedColumnsLeft: 1
-            },
-            "search": {
-                "caseInsensitive": true,
-                "regex": true
-            },
-            "select" : true,
-            "order" : []
-        });
-    });
-    function alert_placeholder(){
-        alert('Coming Soon!')
-    }
+    {% include 'js/blast-results.js'%}
 </script>
 </html>

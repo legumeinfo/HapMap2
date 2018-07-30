@@ -3,7 +3,7 @@ import json
 from jinja2 import Environment, FileSystemLoader
 from hapmap2 import app, session, g, render_template, request
 from flask import render_template_string, make_response, jsonify
-from mailer import hapmap2_mailer
+from mailer.hapmap2_mailer import hapmap2_mailer
 from api import help, germplasm, blast
 
 logger = app.logger
@@ -20,27 +20,35 @@ def document_root():
 @app.route('/germplasm')
 def main_germplasm():
     '''Germplasm Page'''
-    return render_template('templates/germplasm.html', static_path='/static')
+    template = JINJA_ENV.get_template('jinja/germplasm-main.jinja')
+    response = make_response(render_template_string(template.render()))
+#    return render_template('templates/germplasm.html', static_path='/static')
+    return response
 
 
 @app.route('/germplasm-request', methods=['POST'])
 def germplasm_request():
     '''POST to germplasm request'''
-    if not request.get_json():
+    if not request.form:
         return 'No data submitted', 404
-    data = request.get_json().get('data')
-    if not data:
-        return 'No data submitted', 404
-    template = JINJA_ENV.get_template('jinja/germplasm-request.jinja')
-    reposense = make_response(render_tempalte_string(template.render(
-                                                                data=data))) 
-    return response
+    form_data = request.form
+    return_email = form_data['return-email-input']
+    message = form_data['email-message-input']
+    subject = 'Germplasm Request'
+    if not return_email or not message:
+        return 'No message or return email', 404
+    if not hapmap2_mailer(return_email, ['ctc@ncgr.org', 'adf@ncgr.org'], subject, message):
+        return 'Email Request did not validate, likely domain is not real', 404
+    return 'Email Sent Successfully', 200
 
 
 @app.route('/blast')
 def main_blast():
     '''BLAST page POSTS to /blast-results endpoint'''
-    return render_template('templates/blast.html', static_path='/static/')
+    template = JINJA_ENV.get_template('jinja/blast-main.jinja')
+    response = make_response(render_template_string(template.render()))
+#    return render_template('templates/blast.html', static_path='/static/')
+    return response
 
 
 @app.route('/blast-results', methods=['POST'])

@@ -37,6 +37,10 @@ def parse_post_request(this_request):
     if form_data:  # if form process
          files = this_request.files  # set files to find and parse
          blast_db = form_data['blast-database-select']
+         blast_mode = form_data['blast-method-select']
+         if blast_mode not in BLAST_MODES:
+             return('Cannot use blast mode {}'.format(blast_mode), 400)
+         blast = blast_mode
          if not check_blast_db(blast_db):
              return('No Blast db found for {}'.format(blast_db), 400)
          if form_data.get('blast-sequence-input'):

@@ -1,0 +1,64 @@
+  #blast-main
+  {
+    background-color: rgba(241,241,241, 0.8);
+    margin-top:0.5em;
+    padding-top:0.75em;
+    overflow-x:auto;
+  }
+  #blast-jumbotron
+  {
+    background-color: rgba(125, 62, 188, 0.7);
+    text-align: center;
+  }
+  .jumbotron h1
+  {
+    color:white;
+  }
+  #main-nav-right
+  {
+    margin-right: 0.5em;
+  }
+  #main-nav-left
+  {
+    margin-left: 1.0em
+  }
+  #main-nav-subtext
+  {
+    color: rgba(087, 087, 087, 1);
+  }
+  #blast-sequence-input
+  {
+    align: top;
+    height: 400px;
+  }
+  .dropdown-elements:hover
+  {
+    color: rgba(087, 087, 087, 1);
+  }
+  .btn-primary
+  {
+    background-color: rgba(125, 62, 188, 0.7);
+  }
+  .btn-primary:active
+  {
+    background-color: rgba(125, 62, 188, 0.9);
+  }
+  .btn-primary:hover
+  {
+    background-color: rgba(125, 62, 188, 0.9);
+  }
+  .btn-primary:focus
+  {
+    background-color: rgba(125, 62, 188, 0.9);
+  }
+  .btn-primary:disabled, .btn-primary:disabled:hover
+  {
+    background-color: grey;
+  }
+  #blast-form
+  {
+    padding-bottom: 0.75em;
+  }
+  /*.form-group{
+    padding-top: 0.5em;
+  }*/
