@@ -32,7 +32,8 @@ TGCCTTTCTAATTGTTTTTTATTTACTGACCCTCTAAAAATGGAAACAATTATTGGTTTAATGTCTCATG
 TTAAGTTCCACTTATGGTAGTTTTTTGATCGTTGAAGGATCTTAAATTTTGTTGACAAATGTGACTGATG
 TCTGATTGTGTGTGCGTTTTGGTTTGTAATAAAAAATTCTCACATGAAATTAATTTCA`;
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('Form Poplation and Submit Logic HERE!');
+        let submit_me = document.getElementById('blast-form-submit');
+        submit_me.disabled = true;
         let dropdown = document.getElementById('blast-database-select');
         console.log(dropdown);
         dropdown.length = 0;
@@ -63,7 +64,38 @@ TCTGATTGTGTGTGCGTTTTGGTTTGTAATAAAAAATTCTCACATGAAATTAATTTCA`;
 	request.send();
         document.getElementById('example-sequence').addEventListener('click', function(){
             let blast_sequence = document.getElementById('blast-sequence-input');
+            let submit_me = document.getElementById('blast-form-submit');
             blast_sequence.value = example_sequence;
+            submit_me.disabled = false;
+        });
+        document.getElementById('sequence-input-file').addEventListener('change', function(){
+            let sequence_input = document.getElementById('sequence-input-file');
+            let submit_me = document.getElementById('blast-form-submit');
+            console.log(sequence_input.files[0]);
+            let my_file = sequence_input.files[0];
+            if (my_file.size > 2097152){
+            /*if (my_file.size > 2097){*/
+                submit_me.disabled = true;
+                alert('FILE UPLOADED IS GREATER THAN 2MB');
+            } else {
+                submit_me.disabled = false;
+            }
+        });
+        document.getElementById('blast-sequence-input').addEventListener('input', function(){
+            console.log('INPUT CHANGED!')
+            let submit_me = document.getElementById('blast-form-submit');
+            let my_value = document.getElementById('blast-sequence-input').value
+            console.log(my_value);
+            console.log(my_value.length)
+            if (typeof my_value === 'undefined'){
+                console.log('input undefined');
+                submit_me.disabled = true;
+                return
+            } else if (my_value.length > 0){
+                submit_me.disabled = false;
+            } else {
+                submit_me.disabled = true;
+            }
         });
         document.getElementById('blast-method-select').addEventListener('change', function(v){
             console.log(this.options[v.target.selectedIndex].text);

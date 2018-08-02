@@ -16,6 +16,7 @@
                 {'data': 'location_longitude'}
             ],
             "bSortClasses" : false,
+            'lengthMenu': [[-1, 10, 50, 100], ['All', 10, 50, 100]],
             "colReorder" : {
                 fixedColumnsLeft: [1, 2]
             },

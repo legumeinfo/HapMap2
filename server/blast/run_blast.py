@@ -54,6 +54,14 @@ def blast_targets(blast, query, db, logger, **kwargs):
     sanitized_queries = sanitize_fasta(query)
     query_string = '\n'.join(sanitized_queries)
     blast_cfg = "-outfmt '6'"  # add more here parse kwargs
+    if kwargs.get('culling_limit'):
+        blast_cfg += ' -culling_limit {}'.format(kwargs.get('culling_limit'))
+    if kwargs.get('max_targets'):
+        blast_cfg += ' -max_target_seqs {}'.format(kwargs.get('max_targets'))
+    if kwargs.get('evalue'):
+        blast_cfg += ' -evalue {}'.format(kwargs.get('evalue'))
+    if kwargs.get('percent_id'):
+        blast_cfg += ' -perc_identity {}'.format(kwargs.get('percent_id'))
     cmd = '{} -db {} -query <( echo -e "{}" ) {}'.format(blast, db,
                                                          query_string,
                                                          blast_cfg)

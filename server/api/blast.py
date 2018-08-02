@@ -38,6 +38,16 @@ def parse_post_request(this_request):
          files = this_request.files  # set files to find and parse
          blast_db = form_data['blast-database-select']
          blast_mode = form_data['blast-method-select']
+         blast_maxtargets = form_data['blast-maxtargets-input']
+         blast_culling = form_data['blast-cullinglimit-input']
+         blast_evalue = form_data['blast-evalue-input']
+         blast_pctid = form_data['blast-percentid-input']
+         if not blast_pctid:
+             blast_pctid = 0.0
+         if not blast_evalue:
+             blast_evalue = 0.0
+         options = {'evalue': blast_evalue, 'culling_limit': blast_culling,
+                    'percent_id': blast_pctid, 'max_targets': blast_maxtargets}
          if blast_mode not in BLAST_MODES:
              return('Cannot use blast mode {}'.format(blast_mode), 400)
          blast = blast_mode

@@ -6,6 +6,10 @@
             "colReorder" : {
                 fixedColumnsLeft: 1
             },
+            'dom': 'Bfrtip',
+            'buttons': [
+                'csv', 'excel'
+            ],
             "search": {
                 "caseInsensitive": true,
                 "regex": true
