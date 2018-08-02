@@ -65,6 +65,38 @@
   {
     color: rgba(087, 087, 087, 1);
   }
+  .btn-primary
+  {
+    background-color: rgba(125, 62, 188, 0.7);
+  }
+  .btn-primary:active
+  {
+    background-color: rgba(125, 62, 188, 0.9);
+  }
+  .btn-primary:hover
+  {
+    background-color: rgba(125, 62, 188, 0.9);
+  }
+  .btn-primary:focus
+  {
+    background-color: rgba(125, 62, 188, 0.9);
+  }
+  .btn-primary:disabled, .btn-primary:disabled:hover
+  {
+    background-color: grey;
+  }
+  .modal-dialog,
+  .modal-content {
+    height: 600px;
+  }
+  .modal-body {
+    max-height: calc(100% - 120px);
+    overflow: auto;
+  }
+  textarea.form-control
+  {
+    height: 480px;
+  }
 </style>
 <body background="https://upload.wikimedia.org/wikipedia/commons/c/c6/Medicago_minima_eF.jpg">
 <div class="container" id="germplasm-main">
@@ -99,11 +131,45 @@
                 </tr>
             </thead>
         </table>
-        <button id="request-germplasm">Request Selected</button>
+        <button class="btn btn-primary" data-toggle="modal" id="request-germplasm" data-target="#request-form">Request Selected</button>
+        <div id="request-form" class="modal fade" aria-labelledby="form-label" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="container-fluid">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                         <span aria-hidden="true">&times;</span>
+                         <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="form-label">Enter Message and Click Submit</h4>
+                  </div>
+                  <div class="modal-body">
+                      <form id="germplasm-mailer" action="http://fisher.ncgr.org:50021/germplasm-request" method="POST" enctype='multipart/form-data' encoding='multipart/form-data', target="_blank">
+                          <div class="form-group">
+                              <div class="col-sm-12">
+                                  <label for="return-email-input">Your Email</label>
+                                  <input type="text" class="form-control" id="return-email-input" name="return-email-input" placeholder="YOUR EMAIL HERE!"></input>
+                              </div>
+                              <div class="col-sm-12">
+                                  <label for="email-message-input">Your Message</label>
+                                  <textarea class="form-control" id="email-message-input" name="email-message-input" placeholder="YOUR MESSAGE HERE!"></textarea>
+                              </div>
+                          </div>   
+                      </form> 
+                  </div>
+                  <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary" form="germplasm-mailer">submit</button>
+                      <button padding-top="10px" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
 </div>
 </body>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('request-germplasm').disabled = true;
         var table = $('#germplasm-datatable').DataTable({
             'ajax' : {
                       'url': 'http://fisher.ncgr.org:50021/api/v1/germplasm'
@@ -131,7 +197,15 @@
             "select" : true,
             "order" : []
         });
-        document.getElementById('request-germplasm').addEventListener('click',
+        $('#germplasm-datatable tbody').on('click', 'tr', function(){
+            var selected = table.rows('.selected').data();
+            if (selected.length > 0){
+              document.getElementById('request-germplasm').disabled = false;
+            } else {
+              document.getElementById('request-germplasm').disabled = true;
+            }
+        });
+/*        document.getElementById('request-germplasm').addEventListener('click',
             function(){
                 console.log('clicked me ' + table);
                 var export_me = table.rows('.selected').data();
@@ -145,7 +219,8 @@
                     xhr_post('http://fisher.ncgr.org:50021/germplasm-request', hapmap_ids);
                 }
                 return
-        });
+        });*/
+        /*document.getElementById('request-germplasm').addEventListener('submit')*/
     });
     function xhr_post(url, data){
         var xhr = new XMLHttpRequest();
@@ -158,6 +233,8 @@
                 var new_page = window.open('', '_blank');
                 console.log(new_page);
                 new_page.document.write('<h1>' + response_page + '</h1>');
+                new_page.stop()
+                return
             }
         };
         xhr.send(JSON.stringify(data));

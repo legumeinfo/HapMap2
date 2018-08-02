@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Germplasm</title>
+    {% include 'html/header.html' %}
+</head>
+<style>
+    {% include 'css/germplasm-main.css' %}
+</style>
+<body background="https://upload.wikimedia.org/wikipedia/commons/c/c6/Medicago_minima_eF.jpg">
+<div class="container" id="germplasm-main">
+    {% include 'html/nav.html' %}
+    <div class="jumbotron" id="germplasm-jumbotron">
+        <h1 id="germplasm-header">Medicago Germplasm Listing</h1>
+    </div>
+        <table class="display table table-striped table-bordered" id="germplasm-datatable" width="100%">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>ID</th>
+                    <th>Category</th>
+                    <th>Population</th>
+                    <th>Country</th>
+                    <th>Seeds Origin</th>
+                    <th>Seeds Available</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                </tr>
+            </thead>
+        </table>
+        <button class="btn btn-primary" data-toggle="modal" id="request-germplasm" data-target="#request-form">Request Selected</button>
+        <div id="request-form" class="modal fade" aria-labelledby="form-label" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="container-fluid">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                         <span aria-hidden="true">&times;</span>
+                         <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="form-label">Enter Message and Click Submit</h4>
+                  </div>
+                  <div class="modal-body">
+                      <form id="germplasm-mailer" action="http://fisher.ncgr.org:50021/germplasm-request" method="POST" enctype='multipart/form-data' encoding='multipart/form-data', target="_blank">
+                          <div class="form-group">
+                              <div class="col-sm-12">
+                                  <label for="return-email-input">Your Email</label>
+                                  <input type="text" class="form-control" id="return-email-input" name="return-email-input" placeholder="YOUR EMAIL HERE!"></input>
+                              </div>
+                              <div class="col-sm-12">
+                                  <label for="email-message-input">Your Message</label>
+                                  <textarea class="form-control" id="email-message-input" name="email-message-input" placeholder="YOUR MESSAGE HERE!"></textarea>
+                              </div>
+                          </div>   
+                      </form> 
+                  </div>
+                  <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary" form="germplasm-mailer">submit</button>
+                      <button padding-top="10px" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+</div>
+</body>
+<script>
+    {% include 'js/germplasm-main.js' %}
+</script>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>BLAST</title>
+    {% include 'html/header.html' %}
+</head>
+<style>
+    {% include 'css/blast-main.css' %}
+</style>
+<body background="https://upload.wikimedia.org/wikipedia/commons/c/c6/Medicago_minima_eF.jpg">
+<div class="container" id="blast-main">
+    {% include 'html/nav.html' %}
+    <div class="jumbotron" id="blast-jumbotron">
+        <h1 id="blast-header">Medicago BLAST Service</h1>
+    </div>
+    <form id="blast-form" action="http://fisher.ncgr.org:50021/blast-results" method="POST" enctype='multipart/form-data' encoding='multipart/form-data'>
+<!--    <form id="blast-form" action="http://fisher.ncgr.org:50021/test_post" method="POST">!-->
+        <div class="form-group">
+            <div class="col-sm-12">
+	        <label for="blast-method-select">Select BLAST Method</label>
+	 	<select class="form-control" id="blast-method-select" name="blast-method-select">
+                    <option value="blastn">blastn</option>
+                    <option value="blastp">blastp</option>
+                    <option value="blastx">blastx</option>
+                    <option value="tblastn">tblastn</option>
+                    <option value="tblastx">tblastx</option>
+                </select>
+            </div>
+	</div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <label for="blast-database-select">Select BLAST Database</label>
+                <select class="form-control" id="blast-database-select" name="blast-database-select"></select>
+            </div>
+        </div>
+	<div id="blast-options" class="form-group">
+	    <div class="col-sm-3">
+	        <label for="blast-maxtagets-input">Max Targets</label>
+                <input type="text" class="form-control" id="blast-maxtargets-input" name="blast-maxtargets-input" value=10></input>
+	    </div>
+            <div class="col-sm-3">
+	        <label for="blast-cullinglimit-input">Culling Limit</label>
+                <input type="text" class="form-control" id="blast-cullinglimit-input" name="blast-cullinglimit-input" value=10></input>
+	    </div>
+            <div class="col-sm-3">
+                <label for="blast-evalue-input">E-Value</label>
+                <input type="text" class="form-control" id="blast-evalue-input" name="blast-evalue-input" value="1e-10"></input>
+            </div>
+            <div class="col-sm-3">
+                <label for="blast-percentid-input">Percent Identity</label>
+                <input type="text" class="form-control" id="blast-percentid-input" name="blast-percentid-input" value=95.0></input>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <label for="blast-sequence-input">Input Sequence to BLAST</label>
+                <textarea class="form-control" id="blast-sequence-input" name="blast-sequence-input" placeholder="SEQUENCE HERE"></textarea>
+            </div>
+        </div>
+        <button type=button id="example-sequence" class="btn btn-primary">Example Sequence</button>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <label for="sequence-input-file">FASTA Input</label>
+                <input type=file class="form-control-file" id="sequence-input-file" name="sequence-input-file" aria-describedby="fileHelp">
+                <small id="fileHelp" class="form-text text-muted">Select FASTA Sequence File to Upload</small>
+            </div>
+        </div>
+        <button id="blast-form-submit" type="submit" class="btn btn-primary">submit</button>
+    </form>
+</div>
+</body>
+<script>
+    {% include 'js/blast-main.js'%}
+</script>
+</html>

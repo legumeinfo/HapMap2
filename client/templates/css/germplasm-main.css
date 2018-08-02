@@ -1,0 +1,76 @@
+  #germplasm-main
+  {
+    background-color: rgba(241,241,241, 0.8);
+    margin-top:0.5em;
+    padding-top:0.75em;
+    overflow-x:auto;
+  }
+  #request-germplasm
+  {
+    margin:1.0em;
+  }
+  #germplasm-datatable
+  {
+    background-color: white;
+  }
+  #germplasm-jumbotron
+  {
+    background-color: rgba(125, 62, 188, 0.7);
+    text-align: center; 
+  }
+  .jumbotron h1
+  {
+    color:white;
+  }
+  table tbody tr.even
+  {
+    background-color: rgba(125, 62, 188, 0.12);
+  }
+  #main-nav-right
+  {
+    margin-right: 0.5em;
+  }
+  #main-nav-left
+  {
+    margin-left: 1.0em
+  }
+  #main-nav-subtext
+  {
+    color: rgba(087, 087, 087, 1);
+  }
+  .dropdown-elements:hover
+  {
+    color: rgba(087, 087, 087, 1);
+  }
+  .btn-primary
+  {
+    background-color: rgba(125, 62, 188, 0.7);
+  }
+  .btn-primary:active
+  {
+    background-color: rgba(125, 62, 188, 0.9);
+  }
+  .btn-primary:hover
+  {
+    background-color: rgba(125, 62, 188, 0.9);
+  }
+  .btn-primary:focus
+  {
+    background-color: rgba(125, 62, 188, 0.9);
+  }
+  .btn-primary:disabled, .btn-primary:disabled:hover
+  {
+    background-color: grey;
+  }
+  .modal-dialog,
+  .modal-content {
+    height: 600px;
+  }
+  .modal-body {
+    max-height: calc(100% - 120px);
+    overflow: auto;
+  }
+  textarea.form-control
+  {
+    height: 480px;
+  }
