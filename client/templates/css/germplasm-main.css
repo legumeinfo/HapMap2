@@ -48,6 +48,19 @@
   {
     color: rgba(087, 087, 087, 1);
   }
+  .navbar-nav > li > .dropdown-menu 
+  {
+    background-color: #222;
+    border-color: #080808;    
+  }
+  .navbar-nav > li > .dropdown-menu a
+  {   
+    color: white;
+  }
+  .dropdown-menu > li > a:hover {
+    background-color: rgba(087, 087, 087, 1);
+    background-image: none;
+  }
   .dropdown-elements:hover
   {
     color: rgba(087, 087, 087, 1);
