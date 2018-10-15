@@ -17,6 +17,14 @@ def document_root():
     return render_template('index.html', static_path='/static')
 
 
+@app.route('/about')
+def about_hapmap2():
+    '''About Page for HAPMAP2'''
+    template = JINJA_ENV.get_template('jinja/about.jinja')
+    response = make_response(render_template_string(template.render()))
+    return response
+
+
 @app.route('/germplasm')
 def main_germplasm():
     '''Germplasm Page'''

@@ -26,6 +26,11 @@
   {
     background-color: rgba(125, 62, 188, 0.12);
   }
+  #main-nav-navbar
+  {
+    text-align: center;
+    vertical-align: center;
+  }
   #main-nav-right
   {
     margin-right: 0.5em;

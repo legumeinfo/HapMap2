@@ -14,6 +14,11 @@
   {
     color:white;
   }
+  #main-nav-navbar
+  {
+    text-align: center;
+    vertical-align: center;
+  }
   #main-nav-right
   {
     margin-right: 0.5em;

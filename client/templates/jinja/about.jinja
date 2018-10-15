@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Germplasm</title>
+    {% include 'html/header.html' %}
+</head>
+<style>
+    {% include 'css/about.css' %}
+</style>
+<body background="https://upload.wikimedia.org/wikipedia/commons/c/c6/Medicago_minima_eF.jpg">
+<div class="container-fluid" id="about-main">
+    {% include 'html/nav.html' %}
+    <div class="jumbotron" id="about-jumbotron">
+        <h1 id="about-header">About Medicago HAPMAP</h1>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-md-6 text-justify" id="about=text">
+            <b>We are building a hapmap based on short-read sequencing of approximately 300 inbred Medicago truncatula accessions. This provides a foundation for discovering single nucleotide polymorphisms (SNPs), insertions/ deletions (INDELs) and copy number variants (CNV's) at very high resolution among the Medicago lines. The resulting database of sequence variants establishes a basis for describing population structure and identifying genome segments with shared ancestry (haplotypes) - and thereby creates a long-term, community resource for genome-wide association studies.</b>
+            </div>
+            <div class="cold-md-6" id="about-image">
+                <img style="margin:auto;display:block" src="https://legumeinfo.org/sites/default/files/tripal/tripal_organism/images/19.jpg" alt="Medicago LIS"></img>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

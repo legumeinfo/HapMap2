@@ -1,19 +1,12 @@
-  #germplasm-main
+  #about-main
   {
     background-color: rgba(241,241,241, 0.8);
     margin-top:0.5em;
     padding-top:0.75em;
     overflow-x:auto;
+    max-width: 900px;
   }
-  #request-germplasm
-  {
-    margin:1.0em;
-  }
-  #germplasm-datatable
-  {
-    background-color: white;
-  }
-  #germplasm-jumbotron
+  #about-jumbotron
   {
     background-color: rgba(125, 62, 188, 0.7);
     text-align: center; 
@@ -21,15 +14,6 @@
   .jumbotron h1
   {
     color:white;
-  }
-  table tbody tr.even
-  {
-    background-color: rgba(125, 62, 188, 0.12);
-  }
-  #main-nav-navbar
-  {
-    text-align: center;
-    vertical-align: center;
   }
   #main-nav-navbar
   {
@@ -71,16 +55,4 @@
   .btn-primary:disabled, .btn-primary:disabled:hover
   {
     background-color: grey;
-  }
-  .modal-dialog,
-  .modal-content {
-    height: 600px;
-  }
-  .modal-body {
-    max-height: calc(100% - 120px);
-    overflow: auto;
-  }
-  textarea.form-control
-  {
-    height: 480px;
   }

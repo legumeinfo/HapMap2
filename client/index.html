@@ -24,10 +24,13 @@
   #hapmap2-main-nav
   {
     padding: 2.0em;
+    background-color: rgba(241,241,241, 0.8);
+    margin-top:0.5em;
+    overflow: auto;
   }
   #main-nav-jumbo
   {
-    background-color: rgba(125, 62, 188, 0.65);
+    background-color: rgba(125, 62, 188, 0.75);
     text-align: center;
   }
   #main-nav-navbar
@@ -47,9 +50,18 @@
   {
     color: rgba(087, 087, 087, 1);
   }
-  .dropdown-elements:hover
+  .navbar-nav > li > .dropdown-menu 
   {
-    color: rgba(087, 087, 087, 1);
+    background-color: #222;
+    border-color: #080808;    
+  }
+  .navbar-nav > li > .dropdown-menu a
+  {   
+    color: white;
+  }
+  .dropdown-menu > li > a:hover {
+    background-color: rgba(087, 087, 087, 1);
+    background-image: none;
   }
 </style>
 <body background="https://upload.wikimedia.org/wikipedia/commons/c/c6/Medicago_minima_eF.jpg">
@@ -59,31 +71,60 @@
             <div class="container">
             <nav class="navbar navbar-inverse" id="main-nav-navbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="#" onclick="alert_placeholder()"><b>Home</b></a></li>
+                    <li><a href="http://fisher.ncgr.org:50021"><b>Home</b></a></li>
                     <li><a href="http://fisher.ncgr.org:50021/germplasm"><b>Germplasm</b></a></li>
                     <li><a href="http://fisher.ncgr.org:50021/blast"><b>BLAST</b></a></li>
+                    <li><a href="http://www.medicagogenome.org/mtgd_context_viewer/instructions"><b>GCV at JCVI</b></a></li>
                     <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b>Views </b><span class="caret"></span></a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b>Summaries </b><span class="caret"></span></a>
                       <ul class="dropdown-menu">
-                        <li><a href="http://fisher.ncgr.org:50002/DSCensor_neo4j_dynamic/fasta:HAPMAP"><b class="dropdown-elements">Genome Summary</b></a></li>
-                        <li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=medtr%2FA17_HM341.gnm4.2GZ9&loc=medtr.A17_HM341.gnm4.chr3%3A32720601..32731530&tracks=A17_HM341.gnm4.2GZ9%2CA17_HM341.gnm4.ann2.G3ZY.gene_models_main&highlight="><b class="dropdown-elements">JBrowse A17</b></a></li>
+                        <li><a href="http://fisher.ncgr.org:50020/DSCensor_neo4j_dynamic/fasta:HAPMAP"><b class="dropdown-elements">Genome Summary</b></a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b>JBrowse </b><span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/A17_HM341.gnm4"><b class="dropdown-elements">A17_HM341.gnm4</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/R108_HM340.gnm1"><b class="dropdown-elements">R108_HM340.gnm1</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/HM002.gnm1"><b class="dropdown-elements">HM002.gnm1</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/HM004.gnm1"><b class="dropdown-elements">HM004.gnm1</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/HM005.gnm1"><b class="dropdown-elements">HM005.gnm1</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/HM006.gnm1"><b class="dropdown-elements">HM006.gnm1</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/HM010.gnm1"><b class="dropdown-elements">HM010.gnm1</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/HM017.gnm1"><b class="dropdown-elements">HM017.gnm1</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/HM018.gnm1"><b class="dropdown-elements">HM018.gnm1</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/HM020.gnm1"><b class="dropdown-elements">HM020.gnm1</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/HM022.gnm1"><b class="dropdown-elements">HM022.gnm1</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/HM023.gnm1"><b class="dropdown-elements">HM023.gnm1</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/HM026.gnm1"><b class="dropdown-elements">HM026.gnm1</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/HM034.gnm1"><b class="dropdown-elements">HM034.gnm1</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/HM050.gnm1"><b class="dropdown-elements">HM050.gnm1</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/HM056.gnm1"><b class="dropdown-elements">HM056.gnm1</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/HM058.gnm1"><b class="dropdown-elements">HM058.gnm1</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/HM060.gnm1"><b class="dropdown-elements">HM060.gnm1</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/HM095.gnm1"><b class="dropdown-elements">HM095.gnm1</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/HM125.gnm1"><b class="dropdown-elements">HM125.gnm1</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/HM129.gnm1"><b class="dropdown-elements">HM129.gnm1</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/HM185.gnm1"><b class="dropdown-elements">HM185.gnm1</b></a></li>
+<li><a href="http://fisher.ncgr.org:50021/jbrowse/?data=new_medtr/HM324.gnm1"><b class="dropdown-elements">HM324.gnm1</b></a></li>
                       </ul>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-left" id="main-nav-left">
+<!--                <form class="navbar-form navbar-left" id="main-nav-left">
                     <div class="form-group">
                       <input type="text" class="form-control" placeholder="Search HapMap2" id="basic-search-input">
                     </div>
                     <button class="btn btn-default" id="basic-search-submit"><b>Submit</b></button>
-                </form>
+                </form>--!>
                 <ul class="nav navbar-nav navbar-right" id="main-nav-right">
                     <li><a href="#" onclick="alert_placeholder()"><b>Help</b></a></li>
-                    <li><a href="#" onclick="alert_placeholder()"><b>About</b></a></li>
+                    <li><a href="http://fisher.ncgr.org:50021/about"><b>About</b></a></li>
                     <li><a href="#" onclick="alert_placeholder()"><b>Links</b></a></li>
                 </ul>
             </nav>
             </div>
         </div>
+       <a class="twitter-timeline" data-theme="dark" href="https://twitter.com/MedicagoNews?ref_src=twsrc%5Etfw">Tweets by MedicagoNews</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
     </div>
 </body>
 <script>

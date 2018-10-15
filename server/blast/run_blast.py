@@ -29,7 +29,7 @@ def parse_fmt6(fmt6):
     '''parses fmt 6 and returns dictionary of values'''
     columns = ['Query', 'Subject', 'Percent ID', 'Length', 'Mismatch',
                'Gaps', 'QStart', 'QEnd', 'Sstart', 'Send', 'E-value',
-               'Bit-Score']
+               'Bit-Score', 'Linkout']
     formatted_col = []
     for c in columns:
         c = {'title': c}
@@ -38,14 +38,16 @@ def parse_fmt6(fmt6):
     for record in fmt6.splitlines():
         record = str(record, 'utf-8')
         values = record.split('\t')
+        values.append('')
         add_me = {'qseqid': values[0], 'sseqid': values[1], 
                   'pident': float(values[2]), 'length': int(values[3]),
                   'mismatch': int(values[4]), 'gapopens': int(values[5]),
                   'qstart': int(values[6]), 'qend': int(values[7]),
                   'sstart': int(values[8]), 'send': int(values[9]),
-                  'evalue': float(values[10]), 'bitscore': float(values[11])}
+                  'evalue': float(values[10]), 'bitscore': float(values[11]),
+                  'linkout' : ''}
         data['results'].append(add_me)
-        data['col_data'].append(values) 
+        data['col_data'].append(values)
     return data
 
 
