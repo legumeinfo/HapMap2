@@ -50,10 +50,6 @@
     max-height: 110px;
     overflow: auto;
   }
-  .dropdown-elements:hover
-  {
-    color: rgba(087, 087, 087, 1);
-  }
   .btn-primary
   {
     background-color: rgba(125, 62, 188, 0.7);

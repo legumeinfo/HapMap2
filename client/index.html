@@ -50,6 +50,11 @@
   {
     color: rgba(087, 087, 087, 1);
   }
+  .scrollable-menu {
+    height: auto;
+    max-height: 110px;
+    overflow: auto;
+  }
   .navbar-nav > li > .dropdown-menu 
   {
     background-color: #222;
@@ -59,14 +64,26 @@
   {   
     color: white;
   }
-  .scrollable-menu {
-    height: auto;
-    max-height: 110px;
-    overflow: auto;
-  }
   .dropdown-menu > li > a:hover {
     background-color: rgba(087, 087, 087, 1);
     background-image: none;
+  }
+  .panel > .panel-heading {
+    background-color: rgba(125, 62, 188, 0.75);
+    color: white;
+    text-decoration: bold;
+    text-align: center;
+  }
+  .panel > .panel-body {
+    height: 400px;
+    max-height: 400px;
+    overflow: auto;
+  }
+  .page-footer {
+    background-color: rgba(125, 62, 188, 0.75);
+    color: white;
+    text-decoration: bold;
+    text-align: center;
   }
 </style>
 <body background="https://upload.wikimedia.org/wikipedia/commons/c/c6/Medicago_minima_eF.jpg">
@@ -129,7 +146,33 @@
             </nav>
             </div>
         </div>
-<!--       <a class="twitter-timeline" data-theme="dark" href="https://twitter.com/MedicagoNews?ref_src=twsrc%5Etfw">Tweets by MedicagoNews</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --!>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Welcome to Medicago HAPMAP</div>
+                    <div class="panel-body">Some text about what to do and how to use the nav.</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Medicago News from @MedicagoNews</div>
+                    <div class="panel-body"><a class="twitter-timeline" data-theme="dark" href="https://twitter.com/MedicagoNews?ref_src=twsrc%5Etfw">Tweets by MedicagoNews</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid text-center text-md-left">
+            <footer class="page-footer">
+                <div class="row">
+                    <div class="col-md-6 mt-md-0 mt-3">
+                        <h5 class="text-uppercase">Powered by the Legume Federation</h5>
+                        <p>Links and stuff</p>
+                    </div>
+                    <div class="col-md-6 mt-md-0 mt-3">
+                        <p>SOME COOL LOGO OF SPONSORS</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
     </div>
 </body>
 <script>
