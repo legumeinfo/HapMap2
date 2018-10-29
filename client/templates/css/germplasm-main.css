@@ -5,9 +5,10 @@
     padding-top:0.75em;
     overflow-x:auto;
   }
-  #request-germplasm
+  button[id^='request-germplasm-']
   {
     margin:1.0em;
+    padding-bottom:0.5em;
   }
   #germplasm-datatable
   {
@@ -65,6 +66,11 @@
   {
     color: rgba(087, 087, 087, 1);
   }
+  .scrollable-menu {
+    height: auto;
+    max-height: 110px;
+    overflow: auto;
+  }
   .btn-primary
   {
     background-color: rgba(125, 62, 188, 0.7);
@@ -91,6 +97,7 @@
   }
   .modal-body {
     max-height: calc(100% - 120px);
+    background-color: rgba(125, 62, 188, 0.12);
     overflow: auto;
   }
   textarea.form-control

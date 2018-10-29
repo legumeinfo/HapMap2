@@ -56,6 +56,11 @@
     background-color: rgba(087, 087, 087, 1);
     background-image: none;
   }
+  .scrollable-menu {
+    height: auto;
+    max-height: 110px;
+    overflow: auto;
+  }
   .dropdown-elements:hover
   {
     color: rgba(087, 087, 087, 1);

@@ -45,6 +45,11 @@
   {   
     color: white;
   }
+  .scrollable-menu {
+    height: auto;
+    max-height: 110px;
+    overflow: auto;
+  }
   .dropdown-menu > li > a:hover {
     background-color: rgba(087, 087, 087, 1);
     background-image: none;

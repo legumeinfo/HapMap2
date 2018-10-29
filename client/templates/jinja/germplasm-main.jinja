@@ -13,6 +13,7 @@
     <div class="jumbotron" id="germplasm-jumbotron">
         <h1 id="germplasm-header">Medicago Germplasm Listing</h1>
     </div>
+        <button class="btn btn-primary" data-toggle="modal" id="request-germplasm-header" data-target="#request-form">Request Selected</button>
         <table class="display table table-striped table-bordered" id="germplasm-datatable" width="100%">
             <thead>
                 <tr>
@@ -28,7 +29,7 @@
                 </tr>
             </thead>
         </table>
-        <button class="btn btn-primary" data-toggle="modal" id="request-germplasm" data-target="#request-form">Request Selected</button>
+        <button class="btn btn-primary" data-toggle="modal" id="request-germplasm-footer" data-target="#request-form">Request Selected</button>
         <div id="request-form" class="modal fade" aria-labelledby="form-label" aria-hidden="true">
             <div class="modal-dialog">
               <div class="container-fluid">
@@ -48,6 +49,14 @@
                                   <input type="text" class="form-control" id="return-email-input" name="return-email-input" placeholder="YOUR EMAIL HERE!"></input>
                               </div>
                               <div class="col-sm-12">
+                                  <label for="return-email-input">Your Name</label>
+                                  <input type="text" class="form-control" id="return-email-input" name="return-email-input" placeholder="YOUR NAME HERE!"></input>
+                              </div>
+                              <div class="col-sm-12">
+                                  <label for="return-email-input">Your Institution or Organization</label>
+                                  <input type="text" class="form-control" id="return-email-input" name="return-email-input" placeholder="YOUR INSTITUTION OR ORGANIZATION HERE!!"></input>
+                              </div>
+                              <div class="col-sm-12">
                                   <label for="email-message-input">Your Message</label>
                                   <textarea class="form-control" id="email-message-input" name="email-message-input" placeholder="YOUR MESSAGE HERE!"></textarea>
                               </div>
@@ -55,7 +64,7 @@
                       </form> 
                   </div>
                   <div class="modal-footer">
-                      <button type="submit" class="btn btn-primary" form="germplasm-mailer">submit</button>
+                      <button id="submit-germplasm" type="submit" class="btn btn-primary" form="germplasm-mailer">submit</button>
                       <button padding-top="10px" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                   </div>
                 </div>

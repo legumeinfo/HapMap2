@@ -1,5 +1,6 @@
     document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('request-germplasm').disabled = true;
+        document.getElementById('request-germplasm-header').disabled = true;
+        document.getElementById('request-germplasm-footer').disabled = true;
         var table = $('#germplasm-datatable').DataTable({
             'ajax' : {
                       'url': 'http://fisher.ncgr.org:50021/api/v1/germplasm'
@@ -31,9 +32,11 @@
         $('#germplasm-datatable tbody').on('click', 'tr', function(){
             var selected = table.rows('.selected').data();
             if (selected.length > 0){
-              document.getElementById('request-germplasm').disabled = false;
+              document.getElementById('request-germplasm-header').disabled = false;
+              document.getElementById('request-germplasm-footer').disabled = false;
             } else {
-              document.getElementById('request-germplasm').disabled = true;
+              document.getElementById('request-germplasm-header').disabled = true;
+              document.getElementById('request-germplasm-footer').disabled = true;
             }
         });
 /*        document.getElementById('request-germplasm').addEventListener('click',
