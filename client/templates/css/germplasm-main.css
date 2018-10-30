@@ -2,6 +2,7 @@
   {
     background-color: rgba(241,241,241, 0.8);
     margin-top:0.5em;
+    margin-bottom:0.5em;
     padding-top:0.75em;
     overflow-x:auto;
   }
@@ -99,4 +100,12 @@
   textarea.form-control
   {
     height: 480px;
+  }
+  .page-footer {
+    background-color: rgba(125, 62, 188, 0.75);
+    color: white;
+    text-decoration: bold;
+    text-align: center;
+    margin-top: 0.75em;
+    margin-bottom: 1.0em; 
   }
