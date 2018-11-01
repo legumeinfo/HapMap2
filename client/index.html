@@ -78,7 +78,11 @@
   .panel > .panel-body {
     height: 400px;
     max-height: 400px;
+    background-color: rgba(190,190,190, 0.8);
     overflow: auto;
+  }
+  .panel-default{
+    border-color: #337ab7;
   }
   .page-footer {
     background-color: rgba(125, 62, 188, 0.75);
@@ -148,10 +152,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 panel-group" style="background-color: rgba(241,241,241, 0.8);">
                 <div class="panel panel-default">
                     <div class="panel-heading">Welcome to Medicago HAPMAP</div>
-                    <div class="panel-body">Some text about what to do and how to use the nav.</div>
+                    <div class="panel-body">
+                        <b>HAPMAP2 provides a portal into a diverse set of Medicago Truncatula data from the 23 genomes created in the HAPMAP project.</b>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6">
@@ -163,14 +169,16 @@
         </div>
 <!--        <div class="container-fluid text-center text-md-left"> --!>
             <footer class="page-footer">
-                <div class="row">
+                <div class="row" style="padding-bottom:0.5em;">
                     <div class="col-md-6 mt-md-0 mt-3">
-                        <h5 class="text-uppercase">Powered by the Legume Federation</h5>
-                        <img src="https://www.legumefederation.org/media/filer_public_thumbnails/filer_public/62/13/62139bfd-4b06-4685-9363-ec0512adc1cb/legfed-member.png__163x71_q85_crop_subsampling-2_upscale.png" alt="LEGFED PARTNERS LOGO">
-                        <p>Links and stuff</p>
+                        <h5 class="text-uppercase">Powered by The Legume Federation, NSF, and NCGR LIS</h5>
+                        <a class="inline-block" href="https://www.legumefederation.org/en/"><img src="https://www.legumefederation.org/media/filer_public_thumbnails/filer_public/62/13/62139bfd-4b06-4685-9363-ec0512adc1cb/legfed-member.png__163x71_q85_crop_subsampling-2_upscale.png" alt="LEGFED PARTNERS LOGO"></a>
+                         <a class="inline-block" href="https://www.nsf.gov/"><img src="https://www.legumefederation.org/media/filer_public_thumbnails/filer_public/15/e7/15e7b192-ea64-4bc6-9aa4-710d54f8bb62/nsf1.png__80x80_q85_crop_subsampling-2_upscale.png" alt="NSF LOGO"></a>
+                        <a class="inline-block" href="http://ncgr.org/"><img src="#" alt="NCGR LOGO"></a>
                     </div>
                     <div class="col-md-6 mt-md-0 mt-3">
-                        <p>SOME COOL LOGO OF SPONSORS</p>
+                        <h5 class="text-uppercase">Links to Site Partners</h5>
+                        <p>SOME Links to Other Legume Services/Content</p>
                     </div>
                 </div>
             </footer>
