@@ -13,8 +13,8 @@
     <div class="jumbotron" id="blast-jumbotron">
         <h1 id="blast-header">Medicago BLAST Service</h1>
     </div>
-    <form id="blast-form" action="http://fisher.ncgr.org:50021/blast-results" method="POST" enctype='multipart/form-data' encoding='multipart/form-data'>
-<!--    <form id="blast-form" action="http://fisher.ncgr.org:50021/test_post" method="POST">!-->
+    <form id="blast-form" action="http://{{ domain }}/blast-results" method="POST" enctype='multipart/form-data' encoding='multipart/form-data'>
+<!--    <form id="blast-form" action="http://{{ domain }}/test_post" method="POST">!-->
         <div class="form-group">
             <div class="col-sm-12">
 	        <label for="blast-method-select">Select BLAST Method</label>

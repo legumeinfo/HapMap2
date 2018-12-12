@@ -21,7 +21,7 @@ def document_root():
 def about_hapmap2():
     '''About Page for HAPMAP2'''
     template = JINJA_ENV.get_template('jinja/about.jinja')
-    response = make_response(render_template_string(template.render()))
+    response = make_response(render_template_string(template.render(domain=app.domain)))
     return response
 
 
@@ -29,7 +29,7 @@ def about_hapmap2():
 def main_germplasm():
     '''Germplasm Page'''
     template = JINJA_ENV.get_template('jinja/germplasm-main.jinja')
-    response = make_response(render_template_string(template.render()))
+    response = make_response(render_template_string(template.render(domain=app.domain)))
 #    return render_template('templates/germplasm.html', static_path='/static')
     return response
 
@@ -54,7 +54,7 @@ def germplasm_request():
 def main_blast():
     '''BLAST page POSTS to /blast-results endpoint'''
     template = JINJA_ENV.get_template('jinja/blast-main.jinja')
-    response = make_response(render_template_string(template.render()))
+    response = make_response(render_template_string(template.render(domain=app.domain)))
 #    return render_template('templates/blast.html', static_path='/static/')
     return response
 
@@ -69,7 +69,7 @@ def blast_results():
     else:
         template = JINJA_ENV.get_template('jinja/blast-results.jinja')
         response = make_response(render_template_string(template.render(
-                                                                   data=data)))
+                                                                   data=data, domain=app.domain)))
         return response
 
 

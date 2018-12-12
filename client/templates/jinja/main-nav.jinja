@@ -27,8 +27,8 @@
 <div class="container" id="blast-main">
     <nav class="navbar navbar-inverse" id="main-nav-navbar">
         <ul class="nav navbar-nav">
-            <li><a href="http://fisher.ncgr.org:50021"><b>Home</b></a></li>
-            <li><a href="http://fisher.ncgr.org:50021/germplasm"><b>Germplasm</b></a></li>
+            <li><a href="http://{{ domain }}"><b>Home</b></a></li>
+            <li><a href="http://{{ domain }}/germplasm"><b>Germplasm</b></a></li>
             <li><a href="#"><b>BLAST</b></a></li></li>
         </ul>
         <ul class="nav navbar-nav navbar-right" id="main-nav-right">
@@ -40,8 +40,8 @@
     <div class="jumbotron" id="blast-jumbotron">
         <h1 id="blast-header">Medicago BLAST Service</h1>
     </div>
-    <form id="blast-form" action="http://fisher.ncgr.org:50021/blast-results" method="POST" enctype='multipart/form-data' encoding='multipart/form-data'>
-<!--    <form id="blast-form" action="http://fisher.ncgr.org:50021/test_post" method="POST">!-->
+    <form id="blast-form" action="http://{{ domain }}/blast-results" method="POST" enctype='multipart/form-data' encoding='multipart/form-data'>
+<!--    <form id="blast-form" action="http://{{ domain }}/test_post" method="POST">!-->
         <div class="form-group">
             <div class="col-sm-12">
 	        <label for="blast-method-select">Select BLAST Method</label>

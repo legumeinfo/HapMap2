@@ -1,9 +1,10 @@
     document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('request-germplasm-header').disabled = true;
         document.getElementById('request-germplasm-footer').disabled = true;
+        var domain = "{{ domain }}";
         var table = $('#germplasm-datatable').DataTable({
             'ajax' : {
-                      'url': 'http://fisher.ncgr.org:50021/api/v1/germplasm'
+                      'url': 'http://' + domain + '/api/v1/germplasm'
                      },
             'columns' : [
                 {'data': null, defaultContent: ""},

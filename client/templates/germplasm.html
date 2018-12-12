@@ -102,8 +102,8 @@
 <div class="container" id="germplasm-main">
         <nav class="navbar navbar-inverse" id="main-nav-navbar">
         <ul class="nav navbar-nav">
-	    <li><a href="http://fisher.ncgr.org:50021"><b>Home</b></a></li>
-	    <li><a href="http://fisher.ncgr.org:50021/germplasm"><b>Germplasm</b></a></li>
+	    <li><a href="http://{{ domain }}"><b>Home</b></a></li>
+	    <li><a href="http://{{ domain }}/germplasm"><b>Germplasm</b></a></li>
 	    <li><a href="#"><b>BLAST</b></a></li></li>
 	</ul>
         <ul class="nav navbar-nav navbar-right" id="main-nav-right">
@@ -144,7 +144,7 @@
                     <h4 class="modal-title" id="form-label">Enter Message and Click Submit</h4>
                   </div>
                   <div class="modal-body">
-                      <form id="germplasm-mailer" action="http://fisher.ncgr.org:50021/germplasm-request" method="POST" enctype='multipart/form-data' encoding='multipart/form-data', target="_blank">
+                      <form id="germplasm-mailer" action="http://{{ domain }}/germplasm-request" method="POST" enctype='multipart/form-data' encoding='multipart/form-data', target="_blank">
                           <div class="form-group">
                               <div class="col-sm-12">
                                   <label for="return-email-input">Your Email</label>
@@ -170,9 +170,11 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('request-germplasm').disabled = true;
+        var domain = {{ domain }};
+        console.log(domain);
         var table = $('#germplasm-datatable').DataTable({
             'ajax' : {
-                      'url': 'http://fisher.ncgr.org:50021/api/v1/germplasm'
+                      'url': 'http://' + domain + '/api/v1/germplasm'
                      },
             'columns' : [
                 {'data': null, defaultContent: ""},
@@ -216,7 +218,7 @@
                         hapmap_ids['data'].push(export_me[i]['hapmap_id'].replace(/\s+/g, ''));
                     }
                     console.log(hapmap_ids);
-                    xhr_post('http://fisher.ncgr.org:50021/germplasm-request', hapmap_ids);
+                    xhr_post('http://dev.lis.ncgr.org:50021/germplasm-request', hapmap_ids);
                 }
                 return
         });*/

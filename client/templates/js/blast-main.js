@@ -35,9 +35,10 @@ TCTGATTGTGTGTGCGTTTTGGTTTGTAATAAAAAATTCTCACATGAAATTAATTTCA`;
         let submit_me = document.getElementById('blast-form-submit');
         submit_me.disabled = true;
         let dropdown = document.getElementById('blast-database-select');
+        var domain = "{{ domain }}";
         console.log(dropdown);
         dropdown.length = 0;
-        const blast_dbs = 'http://fisher.ncgr.org:50021/api/v1/blast/databases';
+        const blast_dbs = 'http://' + domain + '/api/v1/blast/databases';
         const request = new XMLHttpRequest();
         request.open('GET', blast_dbs, true);
         request.onload = function (){
