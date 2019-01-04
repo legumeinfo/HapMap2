@@ -34,6 +34,10 @@ TCTGATTGTGTGTGCGTTTTGGTTTGTAATAAAAAATTCTCACATGAAATTAATTTCA`;
     document.addEventListener('DOMContentLoaded', function() {
         let submit_me = document.getElementById('blast-form-submit');
         submit_me.disabled = true;
+        let sequence_input = document.getElementById('sequence-input-file');
+        if(sequence_input.files[0]){
+            submit_me.disabled = false;
+        }
         let dropdown = document.getElementById('blast-database-select');
         var domain = "{{ domain }}";
         console.log(dropdown);

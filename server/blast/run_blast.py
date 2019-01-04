@@ -62,7 +62,7 @@ def blast_targets(blast, query, db, logger, **kwargs):
         blast_cfg += ' -max_target_seqs {}'.format(kwargs.get('max_targets'))
     if kwargs.get('evalue'):
         blast_cfg += ' -evalue {}'.format(kwargs.get('evalue'))
-    if kwargs.get('percent_id'):
+    if kwargs.get('percent_id') and blast == 'blastn':
         blast_cfg += ' -perc_identity {}'.format(kwargs.get('percent_id'))
     cmd = '{} -db {} -query <( echo -e "{}" ) {}'.format(blast, db,
                                                          query_string,
