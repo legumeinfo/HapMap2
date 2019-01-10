@@ -14,7 +14,9 @@ JINJA_ENV = Environment(loader=FileSystemLoader(app.templates_dir),
 @app.route('/')
 def document_root():
     '''Root of application, serves home page'''
-    return render_template('index.html', static_path='/static')
+    template = JINJA_ENV.get_template('index.html')
+    response = make_response(render_template_string(template.render(domain=app.domain)))
+    return response
 
 
 @app.route('/about')
