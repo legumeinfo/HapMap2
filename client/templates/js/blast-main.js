@@ -1,5 +1,3 @@
-    var blast_mode = 'blastn';
-    var blast_db_type = 'nucleotide';
     var dbs = {};
     var example_sequence = `>XM_003601028.3 PREDICTED: Medicago truncatula nodulation-signaling pathway 2 protein (LOC11406790), mRNA
 CACATAACAATATTCCCTTAACTTACCAATCAGTTTTTGGACTTCCACTGTCTCATCCTCTGAATCCTTC
@@ -32,6 +30,13 @@ TGCCTTTCTAATTGTTTTTTATTTACTGACCCTCTAAAAATGGAAACAATTATTGGTTTAATGTCTCATG
 TTAAGTTCCACTTATGGTAGTTTTTTGATCGTTGAAGGATCTTAAATTTTGTTGACAAATGTGACTGATG
 TCTGATTGTGTGTGCGTTTTGGTTTGTAATAAAAAATTCTCACATGAAATTAATTTCA`;
     document.addEventListener('DOMContentLoaded', function() {
+        var method = document.getElementById('blast-method-select').value;
+        var blast_db_type = 'nucleotide';
+        if (method == 'blastn' || method == 'tblastx' || method == 'tblastn'){
+            blast_db_type = 'nucleotide';
+        } else {
+            blast_db_type = 'aminoacid';
+        }
         let submit_me = document.getElementById('blast-form-submit');
         submit_me.disabled = true;
         let sequence_input = document.getElementById('sequence-input-file');

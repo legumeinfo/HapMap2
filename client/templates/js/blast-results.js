@@ -25,6 +25,9 @@
         $('#blast-results-datatable tbody').on('click', 'button', function(){
             var data = results_table.row($(this).parents('tr')).data();
             var genome = data[1].split('.').slice(1, 3).join('.');
+            if(result_type == 'blastp'){
+                
+            }
             var my_region = data[1] + ':' + data[8] + '..' + data[9];
             var domain = "{{ domain }}";
             var my_url = 'http://' + domain + '/jbrowse/?data=medtr/' + genome + '&loc=' + my_region;

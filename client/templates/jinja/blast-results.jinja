@@ -20,8 +20,9 @@
 </body>
 <script>
     var blast_results = {{ data.data }};
-    var columns = blast_results['columns']
-    var data = blast_results['col_data']
+    var columns = blast_results['columns'];
+    var data = blast_results['col_data'];
+    var result_type = blast_results['type'];
     console.log(blast_results);
     console.log(columns);
     console.log(data);

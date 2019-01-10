@@ -85,6 +85,7 @@ def blast_targets(blast, query, db, logger, **kwargs):
 #    assert output, str("results steam not populated, blast errored: " +
 #                       result.returncode + ' ' + error.strip())
     data = parse_fmt6(output)
+    data['type'] = blast
     return data
 
 
