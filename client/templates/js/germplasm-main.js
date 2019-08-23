@@ -32,6 +32,7 @@
         });
         $('#germplasm-datatable tbody').on('click', 'tr', function(){
             var selected = table.rows('.selected').data();
+            var my_selection = selected.map(x => x.hapmap_id.trim()).join(',');
             if (selected.length > 0){
               document.getElementById('request-germplasm-header').disabled = false;
               document.getElementById('request-germplasm-footer').disabled = false;
@@ -39,6 +40,9 @@
               document.getElementById('request-germplasm-header').disabled = true;
               document.getElementById('request-germplasm-footer').disabled = true;
             }
+            var request_me = document.getElementById('return-email-selection');
+            console.log(selected, my_selection);
+            request_me.value = my_selection;
         });
 /*        document.getElementById('request-germplasm').addEventListener('click',
             function(){

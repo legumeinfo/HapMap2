@@ -44,7 +44,9 @@ def germplasm_request():
     form_data = request.form
     return_email = form_data['return-email-input']
     message = form_data['email-message-input']
+    selected = form_data['return-email-selection']
     subject = 'Germplasm Request'
+    message = '{}\n\nSelected Data:\n{}\n'.format(message, selected)
     if not return_email or not message:
         return 'No message or return email', 404
     if not hapmap2_mailer(return_email, ['ctc@ncgr.org', 'adf@ncgr.org'], subject, message):
